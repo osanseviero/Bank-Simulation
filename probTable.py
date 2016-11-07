@@ -7,7 +7,7 @@ def generateDictOfProb(textFile):
 	prevProb = 0
 	for line in f:
 		nums = line.split()
-		arrivalDict[float(nums[0])+prevProb] = int(nums[1])
+		arrivalDict[float(nums[0])+prevProb] = nums[1]
 		prevProb = float(nums[0]) + prevProb
 
 	return collections.OrderedDict(sorted(arrivalDict.items()))
