@@ -1,0 +1,52 @@
+{
+	"name" : "Juan Arandano",
+	"hourSalary" : 140,
+	"serveRate": {
+		"0.10" : 10,
+		"0.10" : 12,
+		"0.10" : 14,
+		"0.15" : 15,
+		"0.15" : 20,	
+		"0.40" : 40
+	},
+	"attend" : "pref"
+}
+{
+	"name" : "Marco Estuviertos",
+	"hourSalary" : 200,
+	"serveRate": {
+		"0.10" : 8,
+		"0.10" : 10,
+		"0.10" : 12,
+		"0.15" : 14,
+		"0.15" : 15,	
+		"0.40" : 20
+	},
+	"attend" : "pref"
+}
+{
+	"name" : "Lucia Marinera",
+	"hourSalary" : 180,
+	"serveRate": {
+		"0.10" : 3,
+		"0.10" : 8,
+		"0.10" : 10,
+		"0.15" : 20,
+		"0.15" : 22,	
+		"0.40" : 24
+	},
+	"attend" : "customer"
+}
+{
+	"name" : "Maria Castañuelas",
+	"hourSalary" : 160,
+	"serveRate": {
+		"0.10" : 0,
+		"0.10" : 12,
+		"0.10" : 14,
+		"0.15" : 15,
+		"0.15" : 20,	
+		"0.40" : 22
+	},
+	"attend" : "nocustomer"
+}

@@ -1,32 +1,26 @@
 import probTable
 import random 
 import arrivals
+import parseServerJson
 
 typeDict =  probTable.generateDictOfProb('typeOfClient')
 
+serverList =  parseServerJson.generateServerList('server.json')
 
-'''
-The next part should later be refactored so it just reads one file with all the info.
+serversForPref = []
+serversForCust = []
+serversForNoCust = []
 
-This arrays defines the order in which each type of server attends
-Pref server attends with priority to preferencial, then customer, then no customer
-Cust server attends with priority to customers, then preferencial, then no customer
-No cust server attends with priority to no customers, then preferencial, then customer
-'''
-
-server0 =  probTable.generateDictOfProb('server')
-server1 =  probTable.generateDictOfProb('server1')
-server2 =  probTable.generateDictOfProb('server2')
-server3 =  probTable.generateDictOfProb('server3')
-
-serversForPref = [server0, server1]
-serversForCust = [server2]
-serversForNoCust = [server3]
+for server in serverList:
+	if server.attend == "pref":
+		serversForPref.append(server)
+	elif server.attend == "customer":
+		serversForCust.append(server)
+	else:
+		serversForNoCust.append(server)
 
 serverLists = [serversForPref, serversForCust, serversForNoCust]
-
 serverOrderList = [[2,1,0], [1,2,0], [0,2,1]]
-
 
 def servePeople(customers):
 	'''Attends a set of customers with a set of servers.'''
@@ -36,8 +30,8 @@ def servePeople(customers):
 	for serverType in serverLists:
 		for server in serverType:
 			a = random.random()
-			serverRate = int(probTable.getValueGivenNumber(server, a))	
-			print serverRate
+			serverRate = int(probTable.getValueGivenNumber(server.serveRates, a))
+			print server.name + " will attend " , serverRate , server.attend
 			for x in serverOrderList[serverId]:
 				if(serverRate > customers[x]):
 					serverRate = serverRate - customers[x]
@@ -49,6 +43,4 @@ def servePeople(customers):
 		serverId = serverId + 1
 	return customers
 		
-
-
 
