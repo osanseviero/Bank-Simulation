@@ -1,3 +1,3 @@
-0.2 noClient
-0.6 client
-0.2 pref
+0.3243 noClient
+0.5862 client
+0.0895 pref

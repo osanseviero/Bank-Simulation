@@ -4,7 +4,7 @@ import arrivals
 import parseServerJson
 
 typeDict =  probTable.generateDictOfProb('typeOfClient')
-serverList =  parseServerJson.generateServerList('server.json')
+serverList =  parseServerJson.generateServerList('serverConfigs/server2.json')
 
 serversForPref = []
 serversForCust = []
@@ -29,7 +29,7 @@ def servePeople(customers):
 	for serverType in serverLists:
 		for server in serverType:
 			a = random.random()
-			serverRate = int(probTable.getValueGivenNumber(server.serveRates, a))
+			serverRate = float(probTable.getValueGivenNumber(server.serveRates, a))
 			print server.name + " will attend " , serverRate , server.attend
 			for x in serverOrderList[serverId]:
 				if(serverRate > customers[x]):
@@ -40,7 +40,6 @@ def servePeople(customers):
 					serverRate = 0
 			print customers
 		serverId = serverId + 1
-	print "Total cost of operating: ", calculateSalary()
 	return customers
 		
 def calculateSalary():
