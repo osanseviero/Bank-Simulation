@@ -4,7 +4,6 @@ import arrivals
 import parseServerJson
 
 typeDict =  probTable.generateDictOfProb('typeOfClient')
-
 serverList =  parseServerJson.generateServerList('server.json')
 
 serversForPref = []
@@ -41,6 +40,16 @@ def servePeople(customers):
 					serverRate = 0
 			print customers
 		serverId = serverId + 1
+	print "Total cost of operating: ", calculateSalary()
 	return customers
 		
+def calculateSalary():
+	cost = 0
+	for server in serverList:
+		cost = cost + server.hourSalary
+	return cost
+
+
+
+
 
