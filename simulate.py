@@ -14,6 +14,7 @@ waitingCustomerCost = 0
 customers = [0, 0, 0]
 timeIdx = 0
 remUsers = 0
+
 for idx, arrival in enumerate(arrivalFiles):
 	print "\nSimulating " + timePeriods[idx]
 	arrivalDict =  probTable.generateDictOfProb(arrival)
@@ -36,8 +37,8 @@ while customers != [0, 0, 0]:
 	for i in range(30):
 		if(customers != [0, 0, 0]):
 			print "\nSimulating minute ", i+1
+			customers = servers.servePeople(customers)
 			for idx, customer in enumerate(customers):
-				customers = servers.servePeople(customers)
 				waitingCustomerCost = waitingCustomerCost + customer * (idx * 0.6)
 	if timeIdx == 16:
 		for idx, customer in enumerate(customers):

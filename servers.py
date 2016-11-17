@@ -25,7 +25,7 @@ def servePeople(customers):
 	'''Attends a set of customers with a set of servers.'''
 	serverId = 0
 
-	print customers
+	print "Customers: " , customers
 	for serverType in serverLists:
 		for server in serverType:
 			a = random.random()

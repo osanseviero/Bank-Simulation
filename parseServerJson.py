@@ -1,6 +1,7 @@
 import json
 from pprint import pprint
 import Server
+import probTable
 
 newServer = Server.Server
 
@@ -19,7 +20,8 @@ def generateServerList(jsonFile):
 	with open(jsonFile) as f:
 		for parsed_json in load_json_multiple(f):
 			servers.append(newServer(parsed_json))
-
+	for server in servers:
+		server.serveRates = probTable.generateDictOfProbJSON(server.serveRates)
 	return servers
 
 
