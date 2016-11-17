@@ -4,7 +4,7 @@ import arrivals
 import parseServerJson
 
 typeDict =  probTable.generateDictOfProb('typeOfClient')
-serverList =  parseServerJson.generateServerList('serverConfigs/server2.json')
+serverList =  parseServerJson.generateServerList('serverConfigs/server5.json')
 
 serversForPref = []
 serversForCust = []

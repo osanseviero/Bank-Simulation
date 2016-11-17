@@ -9,8 +9,6 @@ arrivalFiles = ['arrivals/a830_9', 'arrivals/a9_930', 'arrivals/a930_10', 'arriv
 
 timePeriods = ['8:30-9', '9-9:30', '9:30-10', '10-10:30', '10:30-11', '11-11:30', '11:30-12', '12-12:30', '12:30-13',
 				'13-13:30', '13:30-14', '14-14:30', '14:30-15', '15-15:30', '15:30-16', '16-16:30', '16:30-17']
-
-
 salaryCost = 0
 waitingCustomerCost = 0
 customers = [0, 0, 0]
@@ -22,11 +20,11 @@ for idx, arrival in enumerate(arrivalFiles):
 	salaryCost = salaryCost + servers.calculateSalary()
 	for i in range(30):
 		print "\nSimulating minute ", i+1
-		newCustomers, remArrivals =  arrivals.simulateArrivals(arrivalDict, remUsers)
+		newCustomers, remUsers =  arrivals.simulateArrivals(arrivalDict, remUsers)
 		customers = map(add, customers, newCustomers)
 		customers = servers.servePeople(customers)
 		for idx, customer in enumerate(customers):
-			waitingCustomerCost = waitingCustomerCost + customer * (idx * 0.2)
+			waitingCustomerCost = waitingCustomerCost + customer * (idx * 0.3)
 	timeIdx = timeIdx + 1
 
 while customers != [0, 0, 0]:
@@ -35,13 +33,17 @@ while customers != [0, 0, 0]:
 	timeIdx = timeIdx + 1
 	customers = servers.servePeople(customers)
 	salaryCost = salaryCost + servers.calculateSalary() * 2
-	for idx, customer in enumerate(customers):
-		waitingCustomerCost = waitingCustomerCost + customer * (idx * 0.4)
-	if timeIdx == 17:
+	for i in range(30):
+		if(customers != [0, 0, 0]):
+			print "\nSimulating minute ", i+1
+			for idx, customer in enumerate(customers):
+				customers = servers.servePeople(customers)
+				waitingCustomerCost = waitingCustomerCost + customer * (idx * 0.6)
+	if timeIdx == 16:
 		for idx, customer in enumerate(customers):
-			waitingCustomerCost = waitingCustomerCost + customer * (idx * 0.6)
+			waitingCustomerCost = waitingCustomerCost + customer * idx
 		customers = [0, 0, 0]
-		print "Customers had to be dispatched, this is too late."
+		print "\nCustomers had to be dispatched, this is too late."
 
 
 print "Total cost of salaryCost: " , salaryCost
