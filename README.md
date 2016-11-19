@@ -1,26 +1,65 @@
 Bank Simulation
---------------------
+===============
+
+Overview
+--------
+
 This is a simulation of a bank with the next features
 
- - People arrive at every hour.
+ - People arrive at minute (Non Stationary Poisson Arrivals)
  - People can be pref customers, regular customers or no customers at all.
  - There are servers. Each server can have a priority.
 	 - Ex: Pref server will attend first the pref customers, and then help regular customers.
  - Most numbers will be Poisson-distributed random variables.
  - For rush hours, numbers will be Triangular-distributed random variables.
- - Time in the system is managed in hours. The rates of arrivals are different at every hour.
+ - Time in the system is managed in minutes. The rates of arrivals are different at every 30 minute interval.
  - System also calculates which is the cost of mantaining the system, and is easily reusable to test with different configurations and probability tables.
 
 
+Assumptions
+--------
+The system opens at 8:30 and allows people to arrive until 15:30. People that are already in the system will be attended from 15:30 to 16:00, but end time can be changed.
+
+Each server has his/her own hour salary. If the person has to stay more time to work, even if it is just for a small time period of the next hour, he/she gets payed an extra hour (which is the double of the salary).
+
+The bank loses money when any type of user is waiting. For every minute waiting, the associated loss is \$0.03 per customer. After the bank passes the arrival hour (15:30 by default), the associated cost of waiting is \$0.80 per customer. Finally, if any client needs to be dispatched because bank is closing, the associated cost is \$2.00 per customer. 
+
+
+
+Run Instructions
+----------------
+To run the simulation with a specific server configuration (ex: server1.json), simply run:
+
+    python simulate.py server1
+
+
 Server configurations
-	server1.json
-		2 servers for preferencial customers
-		1 server for normal customer
-		1 server for no customer
-	server2.json
-		2 servers for preferencial customers
-		1 server for no customer
-	server3.json
-		1 server for preferencial customer
-		1 server for normal customer
-		1 server for no customer
+---------------------
+This server configurations use json format. You can create your own server configuration with your custom information.
+
+ - server1.json
+	
+	 - 2 servers for preferencial customers 		
+	 - 1 server for normal customer
+	 - 1 server for no customer
+	
+ - server2.json 		
+	 - 2 servers for preferencial customers 		
+	 - 1 server for no customer 	
+ 
+ - server3.json 	
+	 - 1 server for preferencial customer
+	 -  1 server for normal customer 		
+	 - 1 server for no customer
+
+ - server4.json
+	 - 1 server for preferencial customer
+
+ - server5.json
+	 - 1 server for preferencial customer
+	 - 1 server for normal customer
+
+
+
+
+
