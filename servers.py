@@ -2,9 +2,10 @@ import probTable
 import random 
 import arrivals
 import parseServerJson
+import sys
 
 typeDict =  probTable.generateDictOfProb('typeOfClient')
-serverList =  parseServerJson.generateServerList('serverConfigs/server5.json')
+serverList =  parseServerJson.generateServerList('serverConfigs/' + str(sys.argv[1]) + '.json')
 
 serversForPref = []
 serversForCust = []
