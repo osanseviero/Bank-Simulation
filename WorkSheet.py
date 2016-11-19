@@ -2,8 +2,9 @@ import xlsxwriter
 import sys
 
 class WorkSheet:
-	def __init__(self):
-		self.workbook = xlsxwriter.Workbook('results/' + str(sys.argv[1]) + '.xlsx')
+
+	def __init__(self, count):
+		self.workbook = xlsxwriter.Workbook('results/' + str(sys.argv[1]) + '/simulation' + str(count) + '.xlsx')
 		self.analysis = self.workbook.add_worksheet('summary and analysis')
 		self.worksheet1 = self.workbook.add_worksheet('830to900')
 		self.worksheet2 = self.workbook.add_worksheet('900to930')
@@ -24,7 +25,6 @@ class WorkSheet:
 		self.bold = self.workbook.add_format({'bold': True})
 
 		self.setStyle()
-
 		self.row = 0
 		self.col = 0
 

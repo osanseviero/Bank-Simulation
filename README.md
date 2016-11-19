@@ -31,11 +31,20 @@ Run Instructions
 ----------------
 To run the simulation with a specific server configuration (ex: server1.json), run:
 
-    python simulate.py server1
+    python simulate.py server1 1
 
 Note: For creating xlsx files, XlsxWrite module is used. To run it, be sure to run the next command:
 	
 	sudo pip install XlsxWriter
+
+To run the simulation multiple times, run:
+
+	python simulate.py server1 numberOfTimes
+
+For example:
+	python simulate.py server1 5
+
+Final results are printed in the terminal, and xlsx files are created in the arrivals directory. A different directory is used for every server configuration.
 
 Server configurations
 ---------------------
