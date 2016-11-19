@@ -28,10 +28,13 @@ The bank loses money when any type of user is waiting. For every minute waiting,
 
 Run Instructions
 ----------------
-To run the simulation with a specific server configuration (ex: server1.json), simply run:
+To run the simulation with a specific server configuration (ex: server1.json), run:
 
     python simulate.py server1
 
+Note: For creating xlsx files, XlsxWrite module is used. To run it, be sure to run the next command:
+	
+	sudo pip install XlsxWriter
 
 Server configurations
 ---------------------
