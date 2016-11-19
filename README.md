@@ -22,8 +22,9 @@ The system opens at 8:30 and allows people to arrive until 15:30. People that ar
 
 Each server has his/her own hour salary. If the person has to stay more time to work, even if it is just for a small time period of the next hour, he/she gets payed an extra hour (which is the double of the salary).
 
-The bank loses money when any type of user is waiting. For every minute waiting, the associated loss is \$0.03 per customer. After the bank passes the arrival hour (15:30 by default), the associated cost of waiting is \$0.80 per customer. Finally, if any client needs to be dispatched because bank is closing, the associated cost is \$2.00 per customer. 
+The bank loses money when any type of user is waiting. For every minute waiting, the associated loss is \$0.03 per non customer, \$0.06 per customer, and \$0.09 per preferencial customer. After the bank passes the arrival hour (15:30 by default), the associated cost of waiting is \$0.80 per non customer, \$1.60 per customer, and \$2.40 per preferencial customer. Finally, if any client needs to be dispatched because bank is closing, the associated cost is \$2.00 per non customer, \$4.00 per customer, and \$6.00 per preferencial customer. 
 
+Since it is Non-Stationary Poisson, at a certain minute 2.4999 persons can arrive. Since obviously this can't happen in a real system, the simulation just has 2 arrivals. The 0.499 gets added with the arrivals of the next minute.
 
 
 Run Instructions

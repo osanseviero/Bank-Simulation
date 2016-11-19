@@ -22,11 +22,12 @@ def generateTypeOfClient(amount, dict):
 			preferencialCount += 1
 	return [noClientCount, clientCount, preferencialCount], amount%1
 
-def simulateArrivals(dict, remUsers):
+def simulateArrivals(dict, remUsers, wb, ws):
 	''' Simulates a random number of arrivals given the probability table.'''
 	a = random.random()
 	peopleAmount = float(probTable.getValueGivenNumber(dict, a))
-	print str(peopleAmount + remUsers) + " persons arrived"
+	ws.write(wb.row, wb.col, str(peopleAmount + remUsers) + " persons arrived")
+	wb.row += 1
 	customers, rem = generateTypeOfClient(peopleAmount + remUsers, typeDict)
 	return customers, rem
 

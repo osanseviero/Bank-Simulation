@@ -22,9 +22,15 @@ class WorkSheet:
 		self.worksheet15 = self.workbook.add_worksheet('after')
 
 		self.bold = self.workbook.add_format({'bold': True})
+
+		self.setStyle()
+
+		self.row = 0
+		self.col = 0
+
 	
-	def printBold(self, ws, row, col, text):
-		ws.write(row, col, text, self.bold)
+	def printBold(self, ws, text):
+		ws.write(self.row, self.col, text, self.bold)
 
 	def getWorksheets(self):
 		return [self.worksheet1, self.worksheet2, self.worksheet3,
@@ -34,6 +40,12 @@ class WorkSheet:
 
 	def getWorksheet(self, n):
 		return self.getWorksheets()[n]
+
+	def setStyle(self):
+		self.analysis.set_column(0, 0, 30)
+
+		for ws in self.getWorksheets():
+			ws.set_column(0, 0, 30)
 
 	def close(self):
 		self.workbook.close()

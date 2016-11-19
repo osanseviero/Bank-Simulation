@@ -22,16 +22,33 @@ for server in serverList:
 serverLists = [serversForPref, serversForCust, serversForNoCust]
 serverOrderList = [[2,1,0], [1,2,0], [0,2,1]]
 
-def servePeople(customers):
+def servePeople(customers, wb, ws):
 	'''Attends a set of customers with a set of servers.'''
 	serverId = 0
 
-	print "Customers: " , customers
+	wb.row += 1
+	wb.printBold(ws, "Customers at this point: ")
+	wb.row +=1
+
+	ws.write(wb.row, wb.col, "No Customer: ")
+	ws.write(wb.row, wb.col+1, customers[0])
+	wb.row += 1
+
+	ws.write(wb.row, wb.col, "Customer: ")
+	ws.write(wb.row, wb.col+1, customers[1])
+	wb.row += 1
+
+	ws.write(wb.row, wb.col, "Preferencial: ")
+	ws.write(wb.row, wb.col+1, customers[2])
+	wb.row += 2
+
 	for serverType in serverLists:
 		for server in serverType:
 			a = random.random()
 			serverRate = float(probTable.getValueGivenNumber(server.serveRates, a))
-			print server.name + " will attend " , serverRate , server.attend
+			text = server.name + " will attend " + str(serverRate) + ' giving priority to: ' + str(server.attend)
+			ws.write(wb.row, wb.col, text)
+			wb.row += 1
 			for x in serverOrderList[serverId]:
 				if(serverRate > customers[x]):
 					serverRate = serverRate - customers[x]
@@ -39,8 +56,24 @@ def servePeople(customers):
 				elif(serverRate < customers[x]):
 					customers[x] = customers[x] - serverRate
 					serverRate = 0
-			print customers
 		serverId = serverId + 1
+
+	wb.row += 1
+	wb.printBold(ws, "Customers after serving:: ")
+	wb.row +=1
+
+	ws.write(wb.row, wb.col, "No Customer: ")
+	ws.write(wb.row, wb.col+1, customers[0])
+	wb.row += 1
+
+	ws.write(wb.row, wb.col, "Customer: ")
+	ws.write(wb.row, wb.col+1, customers[1])
+	wb.row += 1
+
+	ws.write(wb.row, wb.col, "Preferencial: ")
+	ws.write(wb.row, wb.col+1, customers[2])
+	wb.row += 4
+
 	return customers
 		
 def calculateSalary():
