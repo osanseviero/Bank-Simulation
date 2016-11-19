@@ -16,7 +16,7 @@ class SimulationInfo:
 
 	def addWaitingCost(self, multiplier):
 		for idx, customer in enumerate(self.customers):
-				self.waitingCustomerCost = self.waitingCustomerCost + customer * (idx * multiplier)
+				self.waitingCustomerCost = self.waitingCustomerCost + customer * ((idx + 1) *multiplier)
 
 	def isEmpty(self):
 		if self.customers == [0, 0, 0]:
