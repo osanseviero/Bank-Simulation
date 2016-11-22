@@ -29,9 +29,9 @@ Since it is Non-Stationary Poisson, at a certain minute 2.4999 persons can arriv
 
 Run Instructions
 ----------------
-To run the simulation with a specific server configuration (ex: server1.json), run:
+To run the simulation with a specific server configuration (ex: server1.json), in the fifth day of the month, run:
 
-    python simulate.py server1 1
+    python simulate.py server1 1 5
 
 Note: For creating xlsx files, XlsxWrite module is used. To run it, be sure to run the next command:
 	
@@ -39,7 +39,7 @@ Note: For creating xlsx files, XlsxWrite module is used. To run it, be sure to r
 
 To run the simulation multiple times, run:
 
-	python simulate.py server1 numberOfTimes
+	python simulate.py server1 numberOfTimes numberOfDay
 
 For example:
 
